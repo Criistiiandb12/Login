@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registro — MiApp</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="page">
+    <form class="card" action="/register" method="POST" autocomplete="on" aria-labelledby="register-title">
+      <div class="brand">
+        <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.12"></circle>
+          <path d="M6 12c0-3.3 2.7-6 6-6v12c-3.3 0-6-2.7-6-6z" fill="currentColor"></path>
+        </svg>
+        <h1 id="register-title">Crear cuenta</h1>
+      </div>
+
+      <p class="subtitle">Completa los campos para registrarte</p>
+
+      <label for="username" class="label">Usuario o correo</label>
+      <input id="username" name="username" type="text" required
+             placeholder="ej: juan@ejemplo.com"
+             class="input" />
+
+      <label for="password" class="label">Contraseña</label>
+      <div class="password-wrapper">
+        <input id="password" name="password" type="password" required minlength="8"
+               placeholder="Mínimo 8 caracteres"
+               class="input" />
+        <button type="button" class="toggle-pass" aria-label="Mostrar contraseña" aria-pressed="false">👁</button>
+      </div>
+
+      <button type="submit" class="btn">Registrarme</button>
+
+      <p class="foot">¿Ya tienes cuenta? <a href="/index.html">Inicia sesión</a></p>
+    </form>
+  </main>
+
+  <script>
+    (function(){
+      const btn = document.querySelector('.toggle-pass');
+      const pass = document.getElementById('password');
+      if (!btn || !pass) return;
+      btn.addEventListener('click', () => {
+        const shown = pass.type === 'text';
+        pass.type = shown ? 'password' : 'text';
+        btn.setAttribute('aria-pressed', String(!shown));
+      });
+    })();
+  </script>
+</body>
+</html>

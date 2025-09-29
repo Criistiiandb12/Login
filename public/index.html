@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Iniciar sesión — MiApp</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="page">
+    <form class="card" action="/login" method="POST" autocomplete="on" aria-labelledby="login-title">
+      <div class="brand">
+        <!-- Logo simple (puedes cambiarlo) -->
+        <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.12"></circle>
+          <path d="M6 12c0-3.3 2.7-6 6-6v12c-3.3 0-6-2.7-6-6z" fill="currentColor"></path>
+        </svg>
+        <h1 id="login-title">MiApp</h1>
+      </div>
+
+      <p class="subtitle">Inicia sesión en tu cuenta</p>
+
+      <label for="username" class="label">Correo o usuario</label>
+      <input id="username" name="username" type="text" required
+             autocomplete="username"
+             placeholder="ej: adry@ejemplo.com"
+             class="input" />
+
+      <label for="password" class="label">Contraseña</label>
+      <div class="password-wrapper">
+        <input id="password" name="password" type="password" required
+               minlength="8"
+               autocomplete="current-password"
+               placeholder="••••••••"
+               class="input" />
+        <button type="button" class="toggle-pass" aria-label="Mostrar contraseña" aria-pressed="false">
+          👁
+        </button>
+      </div>
+
+      <div class="row options">
+        <label class="checkbox">
+          <input type="checkbox" name="remember" />
+          Recuérdame
+        </label>
+        <a class="link" href="/forgot">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <button type="submit" class="btn">Entrar</button>
+
+      <p class="foot">¿No tienes cuenta? <a href="/register.html">Regístrate</a></p>
+    </form>
+  </main>
+
+  <!-- Pequeña mejora opcional: alternar visibilidad de contraseña -->
+  <script>
+    (function(){
+      const btn = document.querySelector('.toggle-pass');
+      const pass = document.getElementById('password');
+      if (!btn || !pass) return;
+      btn.addEventListener('click', () => {
+        const shown = pass.type === 'text';
+        pass.type = shown ? 'password' : 'text';
+        btn.setAttribute('aria-pressed', String(!shown));
+      });
+    })();
+  </script>
+</body>
+</html>
